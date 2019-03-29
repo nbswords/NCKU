@@ -1,4 +1,4 @@
 # NCKU
 Homework of NCKU 
 
-Computer programming and applications doesnot have hw5 because it is a free homework
+* Because it is a free homework, Computer programming and applications does not have hw5

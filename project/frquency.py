@@ -14,6 +14,6 @@ key =key[key.chars != ' ']
 key['num'] = 1
 # group rows by character type, count the occurences in each group
 # and sort by occurance
-key = key.groupby('chars').sum().sort_values('num', ascending=False) / len(key)
+key = key.groupby('chars').sum() / len(key)
 plt.bar(key.index, key.num, width=0.5, color='g')
 plt.show()

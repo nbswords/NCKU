@@ -1,0 +1,150 @@
+<HTML><HEAD><TITLE>parentheses checking using a stack</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=big5">
+<base target="content" href="http://ilin.iim.ncku.edu.tw/ilin/course/DS1801/">
+<link href="http://ilin.iim.ncku.edu.tw/ilin/ilin1.css" rel="stylesheet" type="text/css"></HEAD>
+<BODY bgcolor="#D9D9F3" background="http://ilin.iim.ncku.edu.tw/ilin/gif/blbk1.gif">
+<DIV align=left>
+<TABLE width=560 align=center border=0>
+  <TBODY>
+  <TR>
+    <TH>
+      <TABLE width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD width=100>&nbsp;</TD>
+          <TD>
+            <TABLE width=166 align=center border=1>
+              <TBODY>
+              <TR vAlign=center align=middle bgColor=#ffc0cb>
+                        <TH vAlign=center noWrap align=middle><p><FONT size=+1>2nd 
+                            coding assigment</FONT><br>
+                            <font color="#FF0000">Due 2018/11/12 17:00</font></p>
+                        </TH>
+                      </TR></TBODY></TABLE></TD>
+          <TD width=100>
+            <DIV align=right><I></I></DIV></TD></TR></TBODY></TABLE>
+          <I><FONT 
+      face="Arial, Helvetica, sans-serif" color=#006400 size=-1></FONT></I> 
+          <HR>
+    </TH></TR>
+  <TR>
+    <TD align=center>
+      <TABLE width="100%" border=0 align="center">
+            <TBODY>
+              <TR> 
+                <TD  rowSpan=8 vAlign=top><p>You are asked to write a program 
+                    which can</p>
+                  <ul>
+                    <li> read a string which is composed of ‘(‘, ‘)’, ‘[‘, ‘]’, 
+                      ‘{‘, ‘}’ (any other characters will be ignored)</li>
+                    <li> check the brackets are symmetrical (i.e. matched) using 
+                      a stack </li>
+                    <li>printout the result: either printout &quot;<font color="#FF0000"><strong>OK! 
+                      The string XXXX passed the check!!</strong></font>&quot;, 
+                      or &quot;<font color="#FF0000"><strong>Error!! You should 
+                      add Y right after XX !!</strong></font>&quot;, or &quot;<font color="#FF0000"><strong>Error!! 
+                      You should add Y right before XX !!</strong></font>&quot;, 
+                      depending on the situation of the 1st error from the left to the right, where <font color="#FF0000"><strong>XXXX</strong></font> 
+                      represents the original string you just input, <font color="#FF0000"><strong>Y</strong></font> 
+                      represents the suitable symbol (i.e., ), ], or }) that the 
+                      string <font color="#FF0000"><strong>XX</strong></font> 
+                      is firstly mismatched, and XX represents the part of the 
+                      string that passes the check. </li>
+                  </ul>
+                  <p>Example: suppose your code is named <em>chkstrg</em>, and 
+                    is compiled to be an executable file named <em>chkstrg1</em>. 
+                    After keyin <em>chkstrg1</em> and press enter, you should 
+                    see:</p>
+                  <blockquote> 
+                    <p><strong><font color="#FF0000">Please input a string: </font></strong>(then 
+                      you input, say, <font color="#0000FF"><strong>[2*(5a)+4{x[y%($#)]ss}33]</strong></font>, 
+                      press enter)</p>
+                  </blockquote>
+                  <p>then the program should printout:</p>
+                  <blockquote> 
+                    <p><font color="#FF0000"><strong>OK! The string <font color="#0000FF">[2*(5a)+4{x[y%($#)]ss}33]</font> 
+                      passed the check!!</strong></font></p>
+                  </blockquote>
+                  <p>On the other hand, if one inputs <font color="#0000FF"><strong>[2*(5a)+4{x[y%($#)}ss}33]</strong></font>, 
+                    or <font color="#0000FF"><strong>]234{})</strong></font>, 
+                    or <font color="#0000FF"><strong>123}4@#$[</strong></font> 
+                    , then the program should printout:</p>
+                  <blockquote> 
+                    <p><font color="#FF0000"><strong>Error!! You should add <font color="#0000FF">]</font> 
+                      right after </strong></font><font color="#0000FF"><strong>[2*(5a)+4{x[y%($#)</strong></font><font color="#FF0000"><strong> 
+                      !!<br>
+                      Error!! You should add <font color="#0000FF">[</font> right 
+                      before </strong></font><font color="#0000FF"><strong>]</strong></font><font color="#FF0000"><strong> 
+                      !!<br>
+                      Error!! You should add <font color="#0000FF">{</font> right 
+                      after </strong></font><font color="#0000FF"><strong>123</strong></font><font color="#FF0000"><strong> 
+                      !!</strong></font> </p>
+                  </blockquote>
+                  <p>, respectively.</p>
+                  <p>There may exist other error situations not included in the 
+                    above examples. Anyway, you are responsible to print out the 1st error if there is any.</p>
+                  <hr> <p><strong><font color="#330099">!!Special notice!!</font></strong>:</p>
+                  <ol>
+                    <li>This assignment should not be so difficult. However, you 
+                      will need to know how to manipulate string/character processing. 
+                      You <font color="#FF0000"><strong>HAVE TO</strong></font> 
+                      clearly indicate how you use a &quot;stack&quot; to do the 
+                      checking.</li>
+                    <li>All the characters other than ‘(‘, ‘)’, ‘[‘, ‘]’, ‘{‘, ‘}’ 
+                      should be ignored. </li>
+                    <li>To make your life better, this time I ALLOW you to create 
+                      a FIXED-SIZED array (say, an arry capable of storing at 
+                      least 100 characters) to implement the stack, if you want. 
+                      If you implement the stack using <u>dynamically memory allocation 
+                      and linked list</u>, you may get <font color="#FF0000"><strong>extra 
+                      credits</strong></font> (up to 10 or more points!). In that 
+                      case, you should point out in the comment part of your codes 
+                      so that the TAs may give the extra credits more easily. 
+                    </li>
+                    <li>You have to submit your code electronically to our moodle 
+                      website in time (i.e. <font color="#FF0000"><strong>2018/11/12 
+                      17:00</strong></font>). Again, please do not submit the 
+                      compiled binary file. You only need to submit the source 
+                      code, following the instruction as specified <a href="code_hw_stack#e_turnin">below 
+                      (see About turn-in the code electronically)</a>.</li>
+                    <li> <strong>You also HAVE TO submit a <u>paper version</u> 
+                      of your code, including your code, as well as two sample 
+                      inputs/outputs by <font color="#FF0000"><strong>2018/11/12 17:15</strong></font>. Late turn-in will NOT be accepted 
+                      except for very special reason. So, please remember to get 
+                      up early.</strong></li>
+                  </ol>
+                  <p> 
+                  <hr> <a name="e_turnin"></a>About turn-in the code electronically:</p> 
+                  <ol>
+                    <li>you have to create a directory named <font color="#0000FF"><strong>h3890123_hw2</strong></font> 
+                      (where you should replace h3890123 to be your student id), 
+                      then put your code(s) into that directory, then go up one 
+                      level, zip the whole directory by<br>
+                      <font color="#0000FF"><strong>zip -r h3890123_hw2.zip h3890123_hw2</strong></font><br>
+                    then upload that zip file to our class website.</li>
+                    <li>Note that any late turn-in after <font color="#FF0000"><strong>2018/11/12 17:00</strong> </font>will not be allowed, except for very 
+                      special reasons.</li>
+                  </ol></TD>
+              </TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR>
+                <TD vAlign=top>&nbsp;</TD>
+              </TR>
+            </TBODY>
+          </TABLE>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD>
+      <DIV align=center>[<a href="index.html">Syllabus</a>][<a href="rules.html">Grading 
+            rules</a>][<a href="programming.html">Programming rules</a>][<a href="material.html">Course 
+            materials</a>]</DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV align=center>[<a href="../index.html">Course Main Page</a>]</DIV></TD></TR></TBODY></TABLE></DIV></BODY></HTML>

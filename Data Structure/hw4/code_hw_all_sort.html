@@ -1,0 +1,460 @@
+<HTML><HEAD><TITLE>Running time analysis of 5 sorting algorithms</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=big5">
+
+<link href="../../webfiles/ilin1.css" rel="stylesheet" type="text/css"></HEAD>
+<BODY bgcolor="#D9D9F3" background="../../webfiles/blbk1.gif">
+<DIV align=left>
+<TABLE width=560 align=center border=0>
+  <TBODY>
+  <TR>
+    <TH>
+      <TABLE width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD width=100>&nbsp;</TD>
+          <TD>
+            <TABLE width=166 align=center border=1>
+              <TBODY>
+              <TR vAlign=center align=middle bgColor=#ffc0cb>
+                        <TH vAlign=center noWrap align=middle><p><FONT size=+1>4th 
+                            Homework</FONT><br>
+                            <font color="#FF0000">Due 19/01/09 10:00</font></p>
+                        </TH>
+                      </TR></TBODY></TABLE></TD>
+          <TD width=100>
+            <DIV align=right><I></I></DIV></TD></TR></TBODY></TABLE>
+          <I><FONT 
+      face="Arial, Helvetica, sans-serif" color=#006400 size=-1></FONT></I> 
+          <HR>
+    </TH></TR>
+  <TR>
+    <TD align=center>
+      <TABLE width="100%" border=0 align="center">
+            <TBODY>
+              <TR> 
+                <TD  rowSpan=10 vAlign=top><p>You are asked to write a program 
+                    which can</p>
+                  <ul>
+                    <li>read an integer <font color="#0000FF"><strong>is_p</strong></font> (meaing whether to print out A or not), natural number <font color="#0000FF"><strong>n</strong></font>, 
+                      a lower bound integer <font color="#0000FF"><strong>a_min</strong></font>, 
+                      an upper bound integer <font color="#0000FF"><strong>a_max</strong></font>, and an integer as the random seed <font color="#0000FF"><strong>rs</strong></font></li>
+                    <li>allocate memory for an array <strong><font color="#0000FF">A</font></strong> 
+                      of <font color="#0000FF"><strong>n</strong></font> integers<font size="-1"> (here we assume to use A[1],...,A[n], if you want to use A[0],...,A[n-1], please do whatever necessary changes by yourself)</font></li>
+                    <li>using the random seed  <font color="#0000FF"><strong>rs</strong></font> to generate <strong><font color="#0000FF">n</font></strong> 
+                      random <strong>integer</strong> numbers which are uniformly 
+                      distributed in the range<font color="#0000FF"><strong> [a_min, 
+                      a_max]</strong></font> , and store these <strong><font color="#0000FF">n</font></strong> 
+                      random <strong>integer</strong> numbers in A[1],...,A[n].</li>
+                    <li>if <font color="#0000FF"><strong>is_p=1</strong></font> then print out A[1],...A[n] and STOP; Otherwise do nothing and CONTINUE</li>
+                    <li>write the following 7 sorting functions  
+                      <ul>
+                        <li><strong>IS(A,n)</strong> : do the insertion 
+                          sort</li>
+                        <li><strong>MS(A,1,n)</strong> : do the merge 
+                          sort</li>
+                        <li><strong>HS(A,n)</strong> : do the heap sort</li>
+                        <li><strong>QS(A,1,n) </strong>: do the quick sort</li>
+                        <li><strong>CS(A,n,k) </strong>: do the counting sort</li>
+                        <li><strong>RS(A,n,k) </strong>: do the radix sort</li>
+                        <li><strong>BS(A,n) </strong>: do the bucket sort</li>
+                      </ul>
+                      these five functions all sort the same array A in <font color="#FF0000"><strong>nonincreasing</strong> 
+                      order (i.e.<strong>從大排至小；非從小排至大!！</strong>)</font></li>
+                    <li>your code should also contain the following 4 other functions 
+                      <ul>
+                        <li><strong>printout_array(A,1,n)</strong>&nbsp;: to printout the integer 1-D array A (from Hw2, or HW4, make necesary changes by yourself)</li>
+                        <li><strong>duplicate_array(A,B,1,n)</strong>&nbsp;: to duplicate 
+                          1-D array A to be array B, where both A &amp; B have dimensions 1xn (from HW2, or HW4, make necesary changes by yourself)</li>
+                        <li><strong>is_A_desc(A,n)</strong> : to check whether 
+                          A[i]&gt;=A[j] for any i&lt;j<br>
+                          if it passes the checking, then return &quot;1&quot; and printout &quot;order OK!&quot;; otherwise, return &quot;0&quot; and printout 
+                          &quot;!!WRONGLY SORTED!!&quot;. (from HW4, make necesary changes by yourself)<br>
+                        </li>
+                        <li><strong>mytimer()</strong> : to return a time tag. 
+                          please use related files in this <a href="https://www.dropbox.com/s/jc4rk7mo068dskv/check_time.c?dl=0">example 
+                          file</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <p>To be more specific, your code has to </p>
+                  <ol>
+                    <li>read <strong><font color="#FF0000"> [is_p, n, a_min, a_max, rs]</font></strong> from screen</li>
+                    <li>allocate memory for 2 arrays of integers <strong>A</strong> 
+                      and <strong>B</strong>, each with size=n</li>
+                    <li>using <strong>rs</strong> to generate <strong>n</strong> random integers uniformly 
+                      distributed in the range <strong>[a_min,a_max]</strong>, 
+                      store them in <strong>A</strong></li>
+                    <li>if<font color="#FF0000"> </font>is_p=1 then print out A and STOP</li>
+                    <li>copy <strong>A</strong> to <strong>B</strong> (i.e. duplicate 
+                      <strong>A</strong>'s value into <strong>B</strong>)</li>
+                    <li>DO INSERTION SORT
+                      <ol>
+                        <li>execute t1=<strong>mytimer()</strong>, <strong>IS(A,n)</strong>, 
+                          execute t2=mytimer(), compute t_is=t2-t1</li>
+                        <li>execute <strong>is_A_desc(A,n)</strong>, if it returns &quot;0&quot; then print out &quot;!!INSERTION SORT WRONG!!&quot; and STOP.</li>
+                      </ol>
+                    </li>
+                    <li>copy <strong>B</strong> back to <strong>A</strong> so 
+                      that <strong>A</strong> has its original values</li>
+                    <li>DO MERGE SORT
+                      <ol>
+                        <li>execute t1=<strong>mytimer()</strong>, <strong>MS(A,1,n)</strong>, 
+                          execute t2=mytimer(), compute t_ms=t2-t1</li>
+                        <li>execute<strong> is_A_desc(A,n)</strong>, if it returns &quot;0&quot; then  print out &quot;!!MERGE SORT WRONG!!&quot; and STOP.</li>
+                      </ol>
+                    </li>
+                    <li>copy <strong>B</strong> back to <strong>A</strong> so 
+                      that <strong>A</strong> has its original values</li>
+                    <li>DO HEAP SORT
+                      <ol>
+                        <li>execute t1=<strong>mytimer()</strong>, <strong>HS(A,n)</strong>, 
+                          execute t2=mytimer(), compute t_hs=t2-t1</li>
+                        <li>execute <strong>is_A_desc(A,n)</strong>, if it returns &quot;0&quot; then  print out &quot;!!HEAP SORT WRONG!!&quot; and STOP.</li>
+                      </ol>
+                    </li>
+                    <li>copy <strong>B</strong> back to <strong>A</strong> so 
+                      that <strong>A</strong> has its original values</li>
+                    <li>DO QUICK SORT
+                      <ol>
+                        <li>execute t1=<strong>mytimer()</strong>, <strong>QS(A,1,n)</strong>, 
+                          execute t2=mytimer(), compute t_qs=t2-t1</li>
+                        <li>execute <strong>is_A_desc(A,n)</strong>, if it returns &quot;0&quot; then  print out &quot;!!QUICK SORT WRONG!!&quot; and STOP.</li>
+                      </ol>
+                    </li>
+                    <li>copy <strong>B</strong> back to <strong>A</strong> so 
+                      that <strong>A</strong> has its original values</li>
+                    <li>DO COUNTING SORT
+                      <ol>
+                        <li>execute t1=<strong>mytimer()</strong>, <strong>CS(A,n)</strong>, 
+                          execute t2=mytimer(), compute t_cs=t2-t1</li>
+                        <li>execute <strong>is_A_desc(A,n)</strong>, if it returns &quot;0&quot; then  print out &quot;!!COUNTING SORT WRONG!!&quot; and STOP.</li>
+                      </ol>
+                    </li>
+                    <li>DO RADIX SORT
+                      <ol>
+                        <li>execute t1=<strong>mytimer()</strong>, <strong>RS(A,n,k)</strong>, 
+                          execute t2=mytimer(), compute t_rs=t2-t1</li>
+                        <li>execute <strong>is_A_desc(A,n)</strong>, if it returns &quot;0&quot; then  print out &quot;!!RADIX SORT WRONG!!&quot; and STOP.</li>
+                      </ol>
+                    </li>
+                    <li>DO BUCKET SORT
+                      <ol>
+                        <li>execute t1=<strong>mytimer()</strong>, <strong>BS(A,n,k)</strong>, 
+                          execute t2=mytimer(), compute t_bs=t2-t1</li>
+                        <li>execute <strong>is_A_desc(A,n)</strong>, if it returns &quot;0&quot; then  print out &quot;!!BUCKET SORT WRONG!!&quot; and STOP.</li>
+                      </ol>
+                    </li>
+                    <li>printout n, a_min, a_max, rs, t_is, t_ms, t_hs, t_qs, t_cs, t_rs, and t_bs</li>
+                    <li>free all the memories and end the program</li>
+                  </ol>
+                  <p>Thus, if your code stops in the middle somehwere showing 
+                    a warning message saying that A is not sorted in nonincreasing 
+                    order, that must mean your sorting algorithm is wrong. A correct 
+                    code should successfully sort the same n integers without 
+                    problems. </p>
+                  <p>Small examples: (suppose your code is compiled with a name &quot;allsort&quot;)</p>
+                  <blockquote>
+                    <p><strong><font color=red>allsort  </font></strong><font size=-2>(開始執行程式)</font><br>
+                      <strong><font color=red>Input [is_p,n,a_min,a_max,rs]= 1 10 10 1000 1</font></strong> <font size=-2>(輸入1,10, 10,1000, 1)</font><br>
+                    <strong><font color=red>783 34 872 546 215 89 965 235 77 284 </font></strong> <font size=-2>(輸出10個介於10~1000\的隨機亂整數)</font><br>
+                      <strong><font color=red>allsort </font></strong><font size=-2>(開始執行程式)</font><br>
+                      <strong><font color=red>Input [is_p,n,a_min,a_max,rs]= 0 10 10 1000 1</font></strong> <font size=-2>(輸入0,10, 10,1000, 1)</font>                      <br>
+                    <strong><font color=red>10 10 1000 1 20.1 15.2 14.4 8.9 5.3 7.6 9.7 </font></strong><font size=-2>(輸出 n, a_min, a_max, rs, t_is, t_ms, t_hs, t_qs, t_cs, t_rs, t_bs)</font></p>
+                  </blockquote>
+                  <p>You have to input an n that is large enough (e.g. n=10,000,000, 
+                    a_min=1, a_max=10,000,000) to make the computational time differentiable. In particular, you have to test 
+                    the following 9 random [n, a_min, a_max] categories:[10000, 1, 10000]; [10000, 10000,30000]; 
+                    [10000, 1, 30000]; [50000, 1, 50000]; [50000, 20000, 70000]; 
+                    [50000, 1, 70000]; [100000, 1, 100000]; [100000, 50000, 
+                    150000]; [100000, 1, 150000];<u> For each category, you should generate <font color="#0000FF"><strong>20</strong></font> random cases, each with a different random seed</u>. After the test, make a table 
+                    to summarize the<u> average running time (with standard deviation)</u> spent for each algorithm and each category 
+                    as the following table, where the blank cells should be filled in with 
+                  the mean time (with stdev) spent by algorithms IS, MS, HS, QS, CS, RS and BS, respectively.</p>
+                  <table width="3%" border="1" align="center" cellpadding="1" cellspacing="1">
+                    <tr bgcolor="#999999"> 
+                      <th><strong>case</strong></th>
+                      <th><strong>n</strong></th>
+                      <th><strong>a_min</strong></th>
+                      <th><strong>a_max</strong></th>
+                      <th><strong>IS</strong></th>
+                      <th><strong>MS</strong></th>
+                      <th><strong>HS</strong></th>
+                      <th><strong>QS</strong></th>
+                      <th>CS</th>
+                      <th><strong>RS</strong></th>
+                      <th>BS</th>
+                    </tr>
+                    <tr> 
+                      <th bgcolor="#CCCCCC"> <div align="right">1</div></th>
+                      <td><div align="right">
+                        <div align="right">10,000</div>
+                      </div></td>
+                      <td><div align="right">1</div></td>
+                      <td><div align="right">
+                        <div align="right">
+                          <div align="right">10,000</div>
+                        </div>
+                      </div></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr> 
+                      <th bgcolor="#CCCCCC"> <div align="right">2</div></th>
+                      <td> <div align="right">
+                        <div align="right">10,000</div>
+                      </div></td>
+                      <td><div align="right">10,000</div></td>
+                      <td><div align="right">
+                        <div align="right">
+                          <div align="right">30,000</div>
+                        </div>
+                      </div></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr> 
+                      <th bgcolor="#CCCCCC"> <div align="right">3</div></th>
+                      <td><div align="right">
+                        <div align="right">10,000</div>
+                      </div></td>
+                      <td><div align="right">1</div></td>
+                      <td><div align="right">30,000</div></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr> 
+                      <th bgcolor="#CCCCCC"> <div align="right">4</div></th>
+                      <td><div align="right">
+                        <div align="right">50,000</div>
+                      </div></td>
+                      <td><div align="right">1</div></td>
+                      <td><div align="right">
+                        <div align="right">
+                          <div align="right">50,000</div>
+                        </div>
+                      </div></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr> 
+                      <th bgcolor="#CCCCCC"> <div align="right">5</div></th>
+                      <td><div align="right">
+                        <div align="right">50,000</div>
+                      </div></td>
+                      <td><div align="right">20,000</div></td>
+                      <td><div align="right">
+                        <div align="right">
+                          <div align="right">70,000</div>
+                        </div>
+                      </div></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr> 
+                      <th bgcolor="#CCCCCC"> <div align="right">6</div></th>
+                      <td><div align="right">
+                        <div align="right">50,000</div>
+                      </div></td>
+                      <td><div align="right">1</div></td>
+                      <td><div align="right">70,000</div></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr> 
+                      <th bgcolor="#CCCCCC"> <div align="right">7</div></th>
+                      <td><div align="right">
+                        <div align="right">100,000</div>
+                      </div></td>
+                      <td><div align="right">1</div></td>
+                      <td><div align="right">
+                        <div align="right">
+                          <div align="right">100,000</div>
+                        </div>
+                      </div></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr> 
+                      <th bgcolor="#CCCCCC"> <div align="right">8</div></th>
+                      <td><div align="right">
+                        <div align="right">100,000</div>
+                      </div></td>
+                      <td><div align="right">50,000</div></td>
+                      <td><div align="right">
+                        <div align="right">
+                          <div align="right">150,000</div>
+                        </div>
+                      </div></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr> 
+                      <th bgcolor="#CCCCCC"> <div align="right">9</div></th>
+                      <td><div align="right">100,000</div></td>
+                      <td><div align="right">1</div></td>
+                      <td><div align="right">150,000</div></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table>
+                  <p>Besides this table, you may conduct more experiments by yourself 
+                    and then write down your observation for the computational 
+                    time spent for different sorting algorithms in different catogires, 
+                    and try to give them a rank showing which one is more efficient 
+                    and which one is not, in which situation. </p>
+                  <hr> <p><strong><font color="#330099">!!Special notice!!</font></strong>:</p>
+                  <ol>
+                    <li>In order to handle the totally 20x9=180 test cases automatically (i.e. not by manually input), you had better learn how to write a <strong>batch code</strong>. In particular, for this homework you may create a file named <strong>run_all.bat</strong> (in cygwin/unix you should also <strong>chmod 777 run_all.bat</strong> to make this file executable) which may contain the following scripts: <br>
+                      (!!以下的random seed先暫定為1,2,3,...,180; 實際的設定隨各位高興，只要是180個不同的數字即可!!)<br>
+                      <strong><font color=red>echo 0 10000 1 10000 1 &gt; input.txt <br>
+                      allsort &lt; input.txt &gt; results.txt </font><font size=-2>(!!第一次寫入results.txt!!)</font><font color=red><br>
+                      echo 0 10000 1 10000 2 &gt; input.txt<br>
+                      allsort &lt; input.txt &gt;&gt; results.txt </font><font size=-2>(!!將輸出附加在原results.txt內容後面)</font><font color=red><br>
+                      ... </font><font size=-2>(!!依樣畫葫蘆，產生其它測試cases)</font><font color=red><br>
+                      ...<br>
+                      echo 0 10000 1 10000 20 &gt; input.txt
+                      <br>
+                      allsort &lt; input.txt &gt;&gt; results.txt<br>
+                      echo 0 10000 10000 30000 1 &gt; input.txt <br>
+allsort &lt; input.txt &gt;&gt; results.txt<br>
+echo 0 10000 10000 30000 2 &gt; input.txt<br>
+allsort &lt; input.txt &gt;&gt; results.txt<br>
+...<br>
+...<br>
+echo 0 10000 10000 30000 20 &gt; input.txt <br>
+allsort &lt; input.txt &gt;&gt; results.txt<br>
+...</font><font size=-2>(!!依樣畫葫蘆，產生其它測試category之cases)</font><font color=red><br>
+...<br>
+...<br>
+...<br>
+echo 0 100000 1 150000 1 &gt; input.txt <br>
+allsort &lt; input.txt &gt;&gt; results.txt<br>
+echo 0 100000 1 150000 2 &gt; input.txt <br>
+allsort &lt; input.txt &gt;&gt; results.txt<br>
+...<br>
+...
+<br>
+echo 0 100000 1 150000 20 &gt; input.txt<br>
+allsort &lt; input.txt &gt;&gt; results.txt</font></strong><br>
+after you have finished executing this batch file, you can use Excel to open results.txt and conduct statistical analysis on the results (i.e. sorting by n, a_min, a_max, rs, calculate the running time average of the 100 cases for each category).
+<br>
+                    </li>
+                    <li>You HAVE TO dynamically create an array of n real numbers. 
+                      If you use the fixed size (e.g. A[1000]) in your variable 
+                      declaration, <u>you will get minus points</u>. (<font color="#FF0000">The 
+                      TAs may test your codes using a large number (say, n=100000000 
+                      or even much more) of random numbers. Thus if you fix the 
+                      size of A, your code will show wrong results in our testing.</font>) 
+                    </li>
+                    <li>You DO NOT HAVE TO take care of any invalid input (e.g. 
+                      if someone input a character/string, your code does not 
+                      need to detect these invalid input, even if the output is 
+                      invalid.</li>
+                    <li>This coding assignment WIILL take much time to finish, 
+                      so please DO START DOING IT SOON!! </li>
+                  </ol>
+                  <hr> <p>About random number generator: (refer to <a href="https://www.dropbox.com/s/fyksrkin2dvoxo2/code_hw_ins_mgs.html?dl=0">previous 
+                    coding assignment</a>)</p>
+                  <ul>
+                    <li><a href="https://www.dropbox.com/s/d4yc6ofm1xtf62f/programming.html?dl=0">程式作業常犯之格式錯誤</a> 
+                      (必看！)                  </li>
+                  </ul>
+                  <hr>
+                  About turn-ins:
+                  <ol>
+                    <li>you have to create a directory named <font color="#0000FF"><strong>h3890123_hw4</strong></font> 
+                      (where you should replace h3890123 to be your student id), 
+                      then put your code(s) into that directory, then go up one 
+                      level, zip the whole directory by<br>
+                      <font color="#0000FF"><strong>zip -r h3890123_hw4.zip h3890123_hw4</strong></font><br>
+                    then upload that zip file to our class website.</li>
+                    <li>Note that any late electronic turn-in after <font color="#FF0000">19/01/09 
+                      10:00 </font>(iteach.ncku.edu.tw time) will not be allowed.                    </li>
+                    <li>Everyone has to print out his/her code on some A4 size 
+                      paper and turn this paper version in class by <font color="#FF0000">19/01/09 10:15. </font><strong>No paper version is accepted after 
+                      10:15</strong>, which means you have to come to class early, 
+                      or, at least ask your friend to turn-in it for you early 
+                      (if you can't attend the class).</li>
+                    <li>Do remember to follow the rule to write your <strong>comment 
+                      part</strong> clearly and completely.</li>
+                    <li><font color="#FF0000"><u>Your paper version should include 
+                      the following 4 parts:</u></font>
+                      <ol>
+                        <li><font color="#FF0000"><u>code</u></font></li>
+                        <li><font color="#FF0000"><u>the screen output of 2 small 
+                          examples made by yourself (only show the t_is, t_ms, 
+                          t_hs, t_qs, and t_cs, with their rank of efficiency); </u></font></li>
+                        <li><font color="#FF0000"><u>the Table of 9 categories (each cell with mean and stdev), you may use whatever suitable units for the valudes (e.g. 1.532*10<sup>8</sup>,...,5.32*10<sup>-2</sup>,..etc). Or if you want, you may use log scale.</u></font></li>
+                        <li><font color="#FF0000"><u>discussion about your observation 
+                          for Also, you should experiment the 9 random cases as 
+                          indicated above.</u></font></li>
+                      </ol>
+                    </li>
+                  </ol></TD>
+              </TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+            </TBODY>
+          </TABLE>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD>
+      <DIV align=center>[<a href="index.html">Syllabus</a>][<a href="rules.html">Grading 
+            rules</a>][<a href="programming.html">Programming rules</a>][<a href="material.html">Course 
+            materials</a>]</DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV align=center>[<a href="../index.html">Course Main Page</a>]</DIV></TD></TR></TBODY></TABLE></DIV></BODY></HTML>

@@ -1,0 +1,165 @@
+<HTML><HEAD><TITLE>coding assignment 2: insertion sort vs. merge sort</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=big5">
+<base target="content" href="https://dl.dropbox.com/u/11385565/www/course/DS1801/">
+<link href="https://www.dropbox.com/s/dmzgbaxrr2xq4oy/ilin1.css?dl=0" rel="stylesheet" type="text/css"></HEAD>
+<BODY bgcolor="#D9D9F3" background="../../webfiles/blbk1.gif">
+<DIV align=left>
+<TABLE width=560 align=center border=0>
+  <TBODY>
+  <TR>
+    <TH>
+      <TABLE width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD width=100>&nbsp;</TD>
+          <TD>
+            <TABLE width=166 align=center border=1>
+              <TBODY>
+              <TR vAlign=center align=middle bgColor=#ffc0cb>
+                        <TH vAlign=center noWrap align=middle><p><FONT size=+1>1st  
+                            assigment</FONT><br>
+                            <font color="#FF0000">Due 10/22 17:00</font></p>
+                        </TH>
+                      </TR></TBODY></TABLE></TD>
+          <TD width=100>
+            <DIV align=right><I></I></DIV></TD></TR></TBODY></TABLE>
+          <I><FONT 
+      face="Arial, Helvetica, sans-serif" color=#006400 size=-1></FONT></I> 
+          <HR>
+    </TH></TR>
+  <TR>
+    <TD align=center>
+      <TABLE width="100%" border=0 align="center">
+            <TBODY>
+              <TR> 
+                <TD  rowSpan=9 vAlign=top><p>You are asked to write a program 
+                    which can</p>
+                  <ul>
+                    <li>read a natual number <font color="#0000FF"><strong>n</strong></font>, 
+                      an integral lower bound <font color="#0000FF"><strong>a_min</strong></font>, 
+                      an integral upper bound <font color="#0000FF"><strong>a_max</strong><font color="#000000">, 
+                      and a random seed</font></font>  <font color="#0000FF"><strong>rseed</strong></font></li>
+                    <li>pirntout a sequence of <strong><font color="#0000FF">n</font></strong> 
+                      random integer numbers with random seed <font color="#0000FF"><strong>rseed</strong></font> (i.e. A[0], A[1],..., A[n-1]) uniformly 
+                      distributed in the range<font color="#0000FF"><strong> [a_min, 
+                      a_max]</strong></font></li>
+                    <li>write a function <font color="#003300"><strong>duplicate_array(A,B,m,n)</strong></font> 
+                      to copy the entire mxn array A to another mxn array B. (e.g. 
+                      here in this assignment we assume an one-dimensional 1xn 
+                      array, thus m=1. This function will be used again for some 
+                      future assignments, so I suggest you to implement an mxn 
+                      version rather than a 1xn version.</li>
+                    <li>write a function <strong><font color="#003300">printout_arrary(A,m,n)</font></strong> 
+                      to printout the entire mxn array A (m=1 in this assignment. 
+                      however, this function will be used again for some future 
+                      assignments, so I suggest you to implement an mxn version 
+                      rather than a 1xn version.)</li>
+                    <li>write a function <font color="#003300"><strong>ins_sort(A,n)</strong></font> 
+                      which sorts these n integers in <strong>DESCENDING order</strong> by insertion sort </li>
+                    <li>printout the sorted array A by printout_array(A,1,n). 
+                      (<font color="#FF0000">!Note!, DO NOT invoke printout_array(A,1,n) 
+                      inside function ins_sort(A,n). You HAVE TO invoke printout_array(A,1,n) 
+                      in the main function</font>)</li>
+                    <li>write a function <font color="#003300"><strong>mg_sort(B,1,n)</strong></font> 
+                      which sorts these n integers in <strong>DESCENDING order</strong> by merge sort                  </li>
+                    <li>sort these n integers by the mergesort, printout the sorted 
+                      sequence</li>
+                  </ul>
+                  <p>Screen Input: <font color="#0000FF"><strong>n, <font color="#0000FF"><strong>a_min</strong></font>, 
+                    <font color="#0000FF"><strong>a_max</strong></font></strong></font><strong><font color="#0000FF"><strong>, rseed</strong></font></strong><br>
+                    Screen Output: </p>
+                  <blockquote> 
+                    <p>first output the sorted sequence by insertion sort in one 
+                      line, then output the sorted sequence by merge sort in one 
+                      line</p>
+                  </blockquote>
+                  <p>example: suppose your code is named as <em>sort1</em>, then 
+                    when you execute <em>sort1</em>, you should see:</p>
+                  <blockquote> 
+                    <p><strong><font color="#FF0000">Please input [n, a_min, a_max, rseed]: 
+                      </font></strong>(then you input, say, 5 10 100, 2, press enter)</p>
+                  </blockquote>
+                  <p>then you should see 5 numbers randomly generated from the range [10,100] on the screen, say,</p>
+                  <blockquote> 
+                    <p><strong><font color="#FF0000">11 22 55 18 53</font></strong></p>
+                  </blockquote>
+                  <p>then you should see the sorted results which look like</p>
+                  <blockquote> 
+                    <p><strong><font color="#FF0000">By insertion sort:<br>
+                      55 53 22 18 11<br>
+                      By merge sort:<br>
+                      55 53 22 18 11</font></strong></p>
+                  </blockquote>
+                  <hr> <p>About random number generator:</p>
+                  <ol>
+                    <li>You may use whatever random number generator function 
+                      you like (some are built-in functions by the language already). 
+                      Whatever you use, you must make sure it compile/run in unix 
+                      environment.</li>
+                    <li>Note that most of the random number function only produce 
+                      a real random number between 0 and 1, so you have to try 
+                      to convert the number to be in the range [a_min, a_max] 
+                      by yourself</li>
+                    <li>For those who use C, <a href="https://www.dropbox.com/s/z9ljno86x626xe5/mt19937.c?dl=0">mt110147.c</a> 
+                      contains several functions which gives random <font color="#FF0000">real</font> 
+                      numbers between 0 and 1. For those who use C++, <a href="https://www.dropbox.com/s/thlhii9h7gsdmga/rn.cpp?dl=0">rn.cpp</a> 
+                      also produces random <font color="#FF0000">real</font> numbers 
+                      between 0 and 1. You may copy them with some modification 
+                      by yourself to produce random <font color="#FF0000">integer</font> 
+                      numbers between the given range [a_min, a_max].</li>
+                    <li>Note that a random seed is used to generate random numbers in a generator. Same random seed will give 
+                      you same sequences of random numbers. If you want to 
+                      produce different random number everytime you call the function, 
+                    you  need to specify another random seed as an input. The TA recitation hour will explain more details. I</li>
+                  </ol>
+                  <p> 
+                  <hr>
+                    About turn-in the code electronically (to moodle):</p>
+                    <ol>
+                    <li>Your C/C++ code must include the <strong><font color=blue>header part</font></strong>, and also should add <strong><font color=blue>comments</font></strong> properly. Failing to do so will reduce your points.</li>
+                    <li>you have to create a directory named <font color="#0000FF"><strong>h3890123_hw1</strong></font> 
+                      (where you should replace r3890123 to be your student id), 
+                      then put your code(s) into that directory, then go up one 
+                      level, zip the whole directory by<br>
+                      <font color="#0000FF"><strong>zip -r h3890123_hw1.zip h3890123_hw1</strong></font><br>
+                      then upload that zip file to our class website (i.e., moodle) by <font color="#FF0000">10/22 
+                      17:00</font>.</li>
+                  </ol>
+                    <p>About paper submission (print out codes/results, submit it in class):
+                    </p>
+                    <ol>
+                      <li>You should also print out a paper version, it contains
+                        <ol>
+                          <li>source code</li>
+                          <li>screen output of input instances (just make some inputs, and output the results)</li>
+                        </ol>
+                      </li>
+                      <li>Bring your paper version to the class by <font color="#FF0000">10/22 
+                        17:15. </font> If you turn it in late 
+                        for few hrs after <font color="#FF0000">10/22 17:15</font>, 
+                        you will only get <font color="#FF0000">discount on </font> your 
+                        grades.  So, please turn-in as early 
+                      as possible. Thanks.</li>
+                    </ol>
+                <p>&nbsp;</p></TD>
+              </TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+              <TR></TR>
+            </TBODY>
+          </TABLE>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD>
+      <DIV align=center>[<a href="index.html">Syllabus</a>][<a href="rules.html">Grading 
+            rules</a>][<a href="programming.html">Programming rules</a>][<a href="material.html">Course 
+            materials</a>]</DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV align=center>[<a href="../index.html">Course Main Page</a>]</DIV></TD></TR></TBODY></TABLE></DIV></BODY></HTML>

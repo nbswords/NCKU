@@ -2,7 +2,7 @@
 
 Homework of NCKU 
 
-* Because it is a free homework, **Computer programming and applications** does not have hw5
+* **Computer programming and applications** does not have hw5 beacuse it is a free work.
 
 
 This hackmd link is  the note of Learning C++ by me and one of my friends

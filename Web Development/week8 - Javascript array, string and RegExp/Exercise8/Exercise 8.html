@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html onclick="updateClock()">
+
+<head>
+  <meta charset="utf-8" />
+  <script src='Baby_name.js'></script>
+  <script>
+    // String to array & number tag
+    var arr = Array.from(Baby_Name_List.split(','));
+    for (var i = 0; i < arr.length; i++) {
+      arr[i] = (i + 1) + "." + arr[i];
+    }
+
+    // create a DropDown List from array
+    function dropDown() {
+      document.getElementById("SelectList");
+      document.write("<select id='SelectList'>");
+      for (var i = 0; i < arr.length; i++)
+        document.write("<option>" + arr[i] + "</option>");
+    }
+    document.write("</select>");
+    dropDown();
+
+    // create pyramid
+    var arr_without_tag = Array.from(Baby_Name_List.split(','));
+
+    function pyramid() {
+      // highlight name
+      var mySelect = document.getElementById("SelectList");
+      var index = mySelect.selectedIndex;
+      // pyramid
+      var totalNumberofRows = 22;
+      var output = '';
+      var counter = 0;
+      for (var i = 0; i < totalNumberofRows; i++) {
+        for (var j = 0; j < i; j++) {
+          // highlight the selected name
+          if (counter == index) {
+            output += '<mark>' + arr_without_tag[counter] + '</mark>' + ' ';
+          } else {
+            output += arr_without_tag[counter] + ' ';
+          }
+          counter++;
+        }
+        document.getElementById("pyramid").innerHTML += output + "</br>";
+        output = '';
+      }
+    }
+
+    function updateClock() {
+      var today = new Date();
+      var str = today.toLocaleString();
+      document.getElementById("time").innerHTML = str;
+    }
+    updateClock(); // initial call
+
+    // random highlight
+    function randhl() {
+      var nameList = document.getElementById("pyramid").innerHTML;
+      // 0~230 random number
+      // random() * (max - min) + min
+      var randIndex = Math.round(Math.random() * (230 - 0) + 0);
+      var target = arr_without_tag[randIndex];
+      // general search by RegExp
+      var myRegExp = new RegExp(target, 'g');
+      var replaceText = '<mark>' + arr_without_tag[randIndex] + '</mark>';
+      var new_string = nameList.replace(myRegExp, replaceText);
+      document.getElementById("pyramid").innerHTML = new_string;
+    }
+    var clock; // clock要放外面  避免重複assign
+    function updataButton() {
+      var btn = document.getElementById("discoButton");
+      // change button value
+      if (btn.value == "Let’s Disco!") {
+        //play music
+        btn.value = "Stop the music!";
+        clock = setInterval(randhl, 1000);
+      } else {
+        //stop music
+        btn.value = "Let’s Disco!";
+        clearInterval(clock);
+      }
+    }
+  </script>
+</head>
+
+
+<body>
+  <form>
+    <select id="SelectList"></select>
+    <input type="button" value="Select" onclick="pyramid();updateClock()" />
+    <input type="button" value="I feel lucky!" onclick="randhl();updateClock()" />
+    <input type="button" value="Let’s Disco!" id="discoButton" onclick="updataButton();updateClock()" />
+    <div id="time"></div>
+    <span id="pyramid"> </span>
+  </form>
+
+</body>
+
+</html>

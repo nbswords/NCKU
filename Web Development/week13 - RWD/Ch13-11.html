@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch13-11</title>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <!-- 相片輪播元件 -->
+  <div id="photoCarousel" class="carousel slide vertical" data-ride="carousel">
+    <!-- Indicators 瀏覽控制 -->
+    <ol class="carousel-indicators" style="margin-top:50px">
+      <li data-target="#photoCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#photoCarousel" data-slide-to="1"></li>
+      <li data-target="#photoCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- 建立相片清單 -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img
+          src="media/carousel_pic1.jpg"
+          style="width:100%; max-height: 430px; object-fit: cover;"
+        >
+      </div>
+      <div class="item">
+        <img
+          src="media/carousel_pic2.jpg"
+          style="width:100%; max-height: 430px; object-fit: cover;"
+        >
+      </div>
+      <div class="item">
+        <img
+          src="media/carousel_pic3.jpg"
+          style="width:100%; max-height: 430px; object-fit: cover;"
+        >
+      </div>
+    </div>
+    <!-- 上一張/下一張控制 -->
+    <a class="left carousel-control" href="#photoCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a class="right carousel-control" href="#photoCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span></a>
+  </div>
+
+  <!-- 巡覽列, navbar-default 表示白底黑字樣式 -->
+  <nav class="navbar navbar-default">
+    <!-- 選單表頭區塊 -->
+    <div class="navbar-header">
+      <span href="#" class="navbar-brand">PhotoTour 旅遊攝影網</span>
+      <!-- 按鈕 -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynav">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- 選單 -->
+    <div id="mynav" class="navbar-collapse collapse">
+      <ul class="navbar-nav nav">
+
+        <li><a href="#">
+            <!-- 選單項目 1 --><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li><a href="#">
+            <!-- 選單項目 2 --><span class="glyphicon glyphicon-heart"></span> TOUR</a></li>
+        <li><a href="#">
+            <!-- 選單項目 3 --><span class="glyphicon glyphicon-picture"></span> PHOTOGRAPHY</a></li>
+        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <!-- 選單項目 4：下拉子選單 -->
+            <span class="glyphicon glyphicon-info-sign"></span> ABOUT US<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><span class="glyphicon glyphicon-plane"> 經營團隊</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-user"> 創意總監</a></li>
+            <li class="divider"></li> <!-- 分隔線 -->
+            <li><a href="#"><span class="glyphicon glyphicon-envelope"> 加入我們</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4">
+        <img src="media/thumbnail_pic1.jpg" alt="Ducks" class="img-responsive img-circle">
+        <div class="caption">
+          <h3>北部賞鳥團</h3>
+          <p class="tourdate">2019/5/25 - 2019/5/28<br>
+            <a href="#">詳細內容</a>
+            <a href="#">線上報名</a></p>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <img src="media/thumbnail_pic2.jpg" alt="Liberty" class="img-responsive img-rounded">
+        <div class="caption">
+          <h3>夜拍團</h3>
+          <p class="tourdate">2020/2/3 - 2020/2/4<br>
+            <a href="#">詳細內容</a>
+            <a href="#">線上報名</a></p>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <img src="media/thumbnail_pic3.jpg" alt="Sakura" class="img-responsive img-thumbnail">
+        <div class="caption">
+          <h3>東京賞櫻團</h3>
+          <p class="tourdate">2020/3/27 - 2020/4/9<br>
+            <a href="#">詳細內容</a>
+            <a href="#">線上報名</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <img src="media/maintopic2.jpg" class="left-block img-responsive">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-7">
+        <p>自有攝影以來，從未有一個時代會像當代如此，竟然有這麼為數眾多的人擁有單眼相機；當然，這都要歸功於進入了數位時代。但是進入的門檻變低了，可是要拍出好照片的難度，並沒有變簡單多少，依然需要謙虛的學習、仔細的觀察、準確的設定、獨到的美感、豐富的經驗、…等。 </p>
+        <p>然而，在我們的教學經驗中，我們發覺有不少攝影者，雖然已懂得一些基礎設定及技巧，但很可惜的並未繼續深究下去，致使在實拍的過程中挫折不斷，反而折損了自己的自信心。有太多的人以為有技巧就能拍出好照片，孰不知真正重要的，是相機機背後面的那顆『腦袋』 ── 必須去思考要拍些什麼？要如何拍？攝影是在詮釋您所看到的場景，在腦海中到底是何模樣？
+
+          所以說，每張照片到底好不好看，是否會令人讚嘆，早在按下快門前，在腦袋裡就已決定好了，而技巧主要的目的，是要來表達出您腦海中的創意想像力！</p>
+        <p>為了激發熱愛攝影的人心中的創造力，PhotoTour 旅遊攝影網創作了本站，希望能將本團隊多年來的經驗，分享給眾多的攝影及旅遊愛好者。我們不僅希望自己能拍的更好，也期望參與的人能拍的比我們還好，讓美麗的影像充滿我們的每一天！</p>
+      </div>
+      <div class="col-xs-12 col-sm-5">
+        <img src="media/wallpaper_pic1.jpg" class="center-block img-responsive">
+        <h4>春櫻</h4>
+        <p>攝影／PhotoTour</p>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="col-xs-12 text-info">
+    <p>PhotoTour 旅遊攝影網　 100 台北市中正區杭州南路一段15-1號19樓　 TEL: 02-2396-3257<br />
+      Copyright © PhotoTour. All rights reserved.<p>
+  </footer>
+</body>
+
+</html>

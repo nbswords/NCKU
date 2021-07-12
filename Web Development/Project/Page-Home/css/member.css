@@ -1,0 +1,48 @@
+img.thumbnails-left{
+  float: left;
+  width: 300px;
+  height: auto;
+  max-width: 100%;
+  margin: auto;
+}
+
+img.thumbnails-right{
+  float: right;
+  width: 300px;
+  height: auto;
+  max-width: 100%;
+  margin: auto;
+}
+
+section.memberIntro div.desc-left {
+  text-align: left;
+  margin-right: 10vw;
+  font-size: 18px;
+  float: left;
+}
+
+section.memberIntro div.desc-right {
+  text-align: right;
+  margin-right: auto;
+  font-size: 18px;
+  float: right;
+}
+section.memberIntro div.desc-left h1{
+    color:#c49f54;
+}
+section.memberIntro div.desc-right h1{
+    color:#c49f54;
+}
+
+section.memberIntro div.desc-left span.whiteAdj{
+  color:rgb(229, 233, 236);
+}
+section.memberIntro div.desc-right span.whiteAdj{
+  color:rgb(229, 233, 236);
+}
+
+section.memberIntro table{
+  width: 1000px;
+  max-width: 100%;
+  margin: auto;
+}

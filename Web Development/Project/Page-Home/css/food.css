@@ -1,0 +1,30 @@
+section.gallery div.gallery {
+  margin: 10px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 600px;
+  margin-left: 120px;
+}
+
+section.gallery div.gallery:hover {
+  border: 1px solid #777;
+
+}
+
+section.gallery div.gallery img {
+  width: 100%;
+  height: auto;
+  margin-left: 0px;
+}
+
+section.gallery div.desc {
+  padding: 20px;
+  text-align: center;
+  color: white;
+  font-size:20px;
+}
+
+
+section.suggestFood {
+
+}

@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/hot-sneaks/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script>
+    $(function() {
+      $("#menu").menu({
+        icons: {
+          submenu: "ui-icon-caret-1-e"
+        },
+        position: {
+          my: "left top",
+          at: "right top"
+        }
+      });
+      $("#datepicker").datepicker({
+        dateFormat: 'yy-mm-dd (D)',
+        changeMonth: true,
+        changeYear: true,
+        showOtherMonths: true
+      });
+
+      $("#progressbar").progressbar({
+        max: 100,
+        change: function() {
+          $("#progressbarNum").text($(this).progressbar('value'))
+        }
+      });
+      var timer = setInterval(function() {
+        var today = new Date();
+        var hour = today.getHours();
+        var min = today.getMinutes();
+        var sec = today.getSeconds();
+        var MaxSecond = 86400;
+        var NowSecond = hour * 60 * 60 + min * 60 + sec;
+        var Percentage = Math.floor(((NowSecond / MaxSecond) * 100) * 100) / 100;
+        $("#progressbar").progressbar("value", Percentage);
+        if (Percentage > 100) clearInterval(timer);
+      }, 10);
+
+      $("#slider").slider({
+        value: 1,
+        min: 1,
+        max: 99,
+        slide: function(event, ui) {
+          var sliderValue = ui.value;
+          // 若為奇數
+          if (sliderValue % 2 == 1) {
+            $("#sliderNum").text(sliderValue);
+          }
+          // 若為偶數
+          else {
+            return false;
+          }
+        }
+      });
+
+      $("#dialog").dialog({
+        autoOpen: false
+      });
+      $("#button").click(function() {
+        // 打開dialog
+        $("#dialog").dialog("open");
+
+        var randInt = Math.floor(Math.random() * 100) //產生0~99
+        console.log(randInt);
+        // 0~9
+        if (randInt < 10) {
+          document.getElementById("result").innerHTML = "Very Lucky! σ(^○^)";
+        }
+        // 10~89
+        else if (randInt >= 10 && randInt < 90) {
+          document.getElementById("result").innerHTML = "Average ( ￣ー￣)σ";
+        }
+        // 90~99
+        else document.getElementById("result").innerHTML = "Very Unlucky ( ´•︵•` )";
+      })
+
+    });
+  </script>
+  <style>
+    .ui-menu {
+      width: 185px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .ui-progressbar {
+      width: 300px;
+    }
+
+    .ui-slider {
+      width: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="menu">
+    <li><a href="#">My favorite sites:</a>
+      <ul>
+        <li><a href="#">Youtube:</a></li>
+        <li><a href="#">Wikipedia:</a></li>
+        <li><a href="#">Amazon:</a></li>
+        <li><a href="#">Facebook</a>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">WhatsApp</a></li>
+            <li><a href="#">Oculus VR</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  </br>
+  <p>Date: <input type="text" id="datepicker"></p>
+  <p>你今天已經過了<span id="progressbarNum"></span>%</p>
+  <div id="progressbar"></div>
+  </br></br>
+  <span id="sliderNum"></span>
+  <div id="slider"></div>
+  </br></br>
+  <input type="button" id="button" value="Feeling Lucky" />
+  <div id="dialog">
+    <p id="result"></p>
+  </div>
+</body>
+
+</html>

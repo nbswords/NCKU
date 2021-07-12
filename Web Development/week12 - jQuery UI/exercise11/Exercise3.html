@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <h1> My Dream House </h1>
+  <form action="http://httpbin.org/post" method="POST">
+    <fieldset>
+      <legend>Location</legend>
+      <label>Zipcode:<input name="Zipcode" type="text" pattern="[0-9]{3}" size="5" /></label><br /><br />
+      <label>Address1:<input name="Address1" type="text" pattern="{20}" placeholder="Address longer than 20
+characters, use the address 2" size="50" /></label><br /><br />
+      <label>Address2:<textarea name="Address2" rows="5" cols="20"></textarea></label><br />
+    </fieldset>
+    <fieldset>
+      <legend>Preference</legend>
+      <label>Painting Color:<input name="color" type="color" value="#0000FF"></label><br /><br />
+      <label>Time you want to visit Open House:<input name="time" type="time" min="10:00" max="16:00" </label><br /><br />
+    </fieldset>
+    <fieldset>
+      <legend>Contact me</legend>
+      <label>Name:<input name="text" pattern="[a-z]{4,}" /></label><br /><br />
+      <label>Phone:<input name="text" pattern="[0-9]{7,}" </label><br /><br />
+    </fieldset>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset"><br />
+  </form>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">QR App</string>
+    <string name="scan_again">Scan Again</string>
+    <string name="generate_qr">Generate QR</string>
+    <string name="qr_value">QR value</string>
+    <string name="scan_qr">Scan QR</string>
+    <string name="grant_permissions">Grant Permissions</string>
+    <string name="grant">Grant</string>
+    <string name="we_need_permission">We need camera permission to scan QR codes. Go to App Settings and manage
+        permissions
+    </string>
+    <string name="cancel">Cancel</string>
+
+
+</resources>

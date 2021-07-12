@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <style>
+    @keyframes moving {
+      0% {
+        top: 0px;
+        left: 0px;
+      }
+
+      25% {
+        top: 0px;
+        left: 650px;
+      }
+
+      50% {
+        top: 450px;
+        left: 650px;
+      }
+
+      75% {
+        top: 450px;
+        left: 0px;
+      }
+
+      100% {
+        left: 0px;
+        top: 100px;
+      }
+    }
+
+
+    button {
+      width: 180px;
+      height: 60px;
+      background-color: lightblue;
+      border: none;
+    }
+
+    button:hover {
+      background-color: blue;
+      color: white;
+
+    }
+
+    button:hover~img {
+      animation-direction: reverse;
+    }
+
+
+    img {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      animation-name: moving;
+      animation-timing-function: linear;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-direction: normal;
+    }
+
+    div {
+      border-style: solid;
+      border-width: 1px;
+      position: relative;
+      left: 50px;
+      width: 600px;
+      height: 400px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <button onclick="AskName()">Ask My Name</button>
+  <button onclick="Faster()">Run Faster!</button>
+  <button onclick="AnotherLogo()">Another Logo</button>
+  </br></br></br>
+  <img id="image" src="media/ncku-logo1.jpg"></img>
+  <div>
+    <p id="name" >
+    </p>
+  </div>
+
+
+</body>
+
+</html>
+<script>
+  function AskName() {
+    var input = prompt("Input your name");
+    if (input != null) {
+      document.getElementById("name").innerHTML =
+        "Howdy! " + input;
+    }
+  }
+
+  function Faster() {
+    document.getElementById("image").style.animationDuration = "1s";
+  }
+
+  function AnotherLogo() {
+    document.getElementById("image").src = "media/ncku-logo2.jpg";
+  }
+</script>

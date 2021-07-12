@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <img src="./Media/ncku-logo1.jpg" width="200">
+  <a href="https://web.ncku.edu.tw/"><img src="https://web.ncku.edu.tw/var/file/0/1000/img/1215/ncku-logo2.jpg" width="200"></a>
+  </br>
+  <a href="mailto:H34064090@gs.ncku.edu.tw"> Email me</a>
+  </br>
+  <a href="tel:(06)275-7575">Contact NCKU</a>
+  </br>
+  My favorite sites:
+  <ul>
+    <li>Youtube </li>
+    <li>Wikipedia </li>
+    <li>Amazon </li>
+    <li>Facebook </li>
+    <ol type="A">
+      <li>Instagram </li>
+      <li>WhatsApp </li>
+      <li>Oculus VR </li>
+    </ol>
+  </ul>
+  </br>
+
+  <table id="table" border="1">
+    <caption><b>Fruit Juice Drinks and Meals</b></caption>
+    <thead>
+      <tr>
+        <th colspan="2" rowspan="2"></th>
+        <th colspan="3">Fruit Juice Drinks</th>
+      <tr>
+        <th>Apple
+        <th>Orange
+        <th>Screwdriver
+    </thead>
+
+    <tbody>
+      <tr>
+        <th rowspan="3">Meal
+        <td>Breakfast
+        <td>0
+        <td>1
+        <td>0
+      <tr>
+        <td>Lunch
+        <td>1
+        <td>0
+        <td>0
+      <tr>
+        <td>Dinner
+        <td>0
+        <td>0
+        <td>1
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <th colspan="2">Total</th>
+        <td>1
+        <td>1
+        <td>1
+    </tfoot>
+  </table>
+
+  <script>
+    $("ul ol li").append("(Acquired by Facebook)");
+    $("li").not("li:contains('Acquired by Facebook')").wrap('<a href="https://www.google.com/"></a>');
+    $("th").attr("style", "border:1px dashed");
+    // 讓右邊logo消失
+    $("img:first").mouseenter(function() {
+      $('img').hide();
+      $(this).show();
+    });
+
+    $("img:first").mouseleave(function() {
+      $('img').show();
+    });
+
+    // 塗色
+    var table = document.getElementById('table');
+    for (var i = 0; i < table.rows.length; i++) { ////遍歷Row
+      for (var j = 0; j < table.rows[i].cells.length; j++) { //遍歷Row中的Col
+        if (table.rows[i].cells[j].innerText == '1')
+          table.rows[i].cells[j].setAttribute('style', 'background-color:lightblue');
+      }
+    }
+
+    $('img:first').click(function() {
+      // 互換位置 eq(1) -> Email , eq(2) -> Contact
+      var email = $('a:eq(1)').clone(); // 一定要用clone 否則物件會消失
+      var contact = $('a:eq(2)');
+      $('a:eq(2)').replaceWith(email);
+      $('a:eq(1)').replaceWith(contact);
+      // increase heigth and width
+      var origin_height = $(this).height();
+      var origin_width = $(this).width();
+      $(this).animate({height:"600px"});
+      $(this).animate({width:"600px"});
+      $(this).animate({height:origin_height});
+      $(this).animate({width:origin_width});
+    });
+
+  </script>
+</body>
+
+
+</html>

@@ -1,0 +1,126 @@
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<script>
+		function dis(val) {
+			document.getElementById("input").value += val;
+		}
+
+		function solve() {
+			let x = document.getElementById("input").value;
+			let y = eval(x);
+			document.getElementById("result").value = y;
+		}
+
+		function clr() {
+			document.getElementById("result").value = "";
+			document.getElementById("input").value = "";
+		}
+
+		function check() {
+			let z = document.getElementById("result").value;
+			let flag;
+			if (!z) {
+				document.getElementById("result").value = "No result yet";
+			} else {
+				// Postive(3)的條件一定要放在Postive前面
+				if (z == 0)
+					flag = 0;
+				else if (z % 3 == 0)
+					flag = 1;
+				else if (z > 0)
+					flag = 2;
+				else if (z < 0)
+					flag = 3;
+				switch (flag) {
+
+					case 0:
+						document.getElementById("result").value = "Zero";
+						break;
+					case 1:
+						document.getElementById("result").value = "Positive(3)";
+						break;
+					case 2:
+						document.getElementById("result").value = "Positive";
+						break;
+					case 3:
+						document.getElementById("result").value = "Negative";
+						break;
+					default:
+						document.getElementById("result").value = "Undefined behavior";
+						break;
+				}
+			}
+		}
+	</script>
+
+	<style>
+		body {
+			font-family: Microsoft Yahei;
+		}
+
+		.title {
+			text-align: center;
+			margin-bottom: 15px;
+			margin-left: 40px;
+			width: 200px;
+		}
+
+		input[type="button"] {
+			width: 80px;
+		}
+
+		input[type="text"] {
+			width: 250px;
+			border-width: 0px;
+		}
+
+		input[id="check"] {
+			width: 250px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="title"> <b>My Calculator</b></div>
+	Result: <td colspan="3"><input type="text" id="result" /></td></br></br>
+	Input: <td colspan="3"><input type="text" id="input" /></td></br></br>
+	<table>
+		<tr>
+			<td><input type="button" value="Clear" onclick="clr()" /> </td>
+			<td><input type="button" value="(" onclick="dis('(')" /> </td>
+			<td><input type="button" value=")" onclick="dis(')')" /> </td>
+
+		</tr>
+		<tr>
+			<td><input type="button" value="1" onclick="dis('1')" /> </td>
+			<td><input type="button" value="2" onclick="dis('2')" /> </td>
+			<td><input type="button" value="3" onclick="dis('3')" /> </td>
+			<td><input type="button" value="+" onclick="dis('+')" /> </td>
+		</tr>
+		<tr>
+			<td><input type="button" value="4" onclick="dis('4')" /> </td>
+			<td><input type="button" value="5" onclick="dis('5')" /> </td>
+			<td><input type="button" value="6" onclick="dis('6')" /> </td>
+			<td><input type="button" value="-" onclick="dis('-')" /> </td>
+		</tr>
+		<tr>
+			<td><input type="button" value="7" onclick="dis('7')" /> </td>
+			<td><input type="button" value="8" onclick="dis('8')" /> </td>
+			<td><input type="button" value="9" onclick="dis('9')" /> </td>
+			<td><input type="button" value="x" onclick="dis('*')" /> </td>
+		</tr>
+		<tr>
+			<td><input type="button" value="." onclick="dis('.')" /> </td>
+			<td><input type="button" value="0" onclick="dis('0')" /> </td>
+			<td><input type="button" value="=" onclick="solve()" /> </td>
+			<td><input type="button" value="/" onclick="dis('/')" /> </td>
+		</tr>
+		<tr>
+			<td colspan="3"><input type="button" id="check" value="Check My Result" onclick="check()" /> </td>
+		</tr>
+	</table>
+</body>
+
+</html>

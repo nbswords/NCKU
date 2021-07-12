@@ -1,0 +1,123 @@
+section.intro {
+  border-top: 1px solid #141414;
+  position: relative;
+  padding-bottom: 5vw;
+}
+
+section.intro div.backgroundWords {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: #5d5b5b;
+  z-index: -1;
+  font-family: "Playfair Display";
+  margin-top: 3vw;
+  /*95px*/
+  font-size: 9vw;
+  /*135px*/
+}
+
+section.intro div.weIntro {
+  color: #c49f54;
+  font-family: "Amiri";
+  font-size: 5.2vw;
+  /*70px*/
+  font-weight: 900;
+  margin-left: 11vw;
+  /*150px*/
+  margin-top: 13.7vw;
+  /*190px*/
+  letter-spacing: 1px;
+}
+
+section.intro div.contactLine {
+  margin-left: 11vw;
+  /*150px*/
+  margin-top: 2vw;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5vw;
+}
+
+section.intro div.contactLine div.line {
+  width: 11vw;
+  height: 1px;
+  background-color: #c49f54;
+  margin-right: 2vw;
+}
+
+section.intro div.contactLine i {
+  font-size: 2.3vw;
+  /*30px*/
+  margin: 0.75vw;
+  color: #5c5c5c;
+}
+
+section.intro div.contactLine i:hover {
+  animation-name: linkAnimate2;
+  animation-duration: 0.5s;
+  color: #c49f54;
+}
+
+section.intro div.clubIntro {
+  font-family: "Noto Sans TC";
+  font-size: 2.3vw;
+  width: 62.5vw;
+  margin: 0 auto;
+  color: #999;
+  margin-top: 2vw;
+  letter-spacing: 1px;
+  line-height: 3.5vw;
+}
+
+section.intro div.clubIntro span.white {
+  color: white;
+}
+
+section.map div{
+   width:800px;
+   height:600px;
+   margin-left: 10vw;
+}
+
+a.button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    border: 3px solid;
+    border-radius: 25px;
+}
+
+section.map-iframe div.map{
+    margin-left: 400px;
+}
+
+section.map-iframe div.map iframe{
+    width: 800px;
+}
+
+@keyframes linkAnimate {
+  from {
+    color: white;
+  }
+
+  to {
+    color: #c49f54;
+  }
+}
+
+@keyframes linkAnimate2 {
+  from {
+    color: #5c5c5c;
+  }
+
+  to {
+    color: #c49f54;
+  }
+}

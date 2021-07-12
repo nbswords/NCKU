@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+}
+
+/* 一行要幾個 */
+.column {
+  float: left;
+  width: 50%;
+  padding: 0 10px;
+}
+
+/* 用padding分開 */
+.row {
+  height: 180px;
+  padding: 60px;
+  margin: 0 -10px;
+}
+
+/* clear float */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.card {
+  padding: 16px;
+  text-align: center;
+  background-color: #dfdcdc;
+  height: 10vw;
+  width: 35vw;
+  transition: transform .2s;
+  margin-left: 50px;
+}
+
+.card:hover {
+  background-color: #fbf9f9;
+  transform: scale(1.5);
+  z-index: 100;
+  position: relative;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+section.club-projects div.project-title span.white {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+section.club-projects div.project-desc span.white {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+section.club-projects div.project-desc p.desc-box {
+  margin-right: 1.5vw;
+  width: 800px;
+  height: 400px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+/* form */
+form {
+  width: 50%;
+  border-radius: 5px;
+  background-color: #dfdcdc;
+  padding: 30px;
+  margin-left: 400px;
+}
+
+input[type=text] {
+  width: 200px;
+  padding: 12px 20px;
+  margin: 8px 2px 0 18px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+textarea {
+  height: 150px;
+  width: 300px;
+  margin-top: 10px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+input[type=submit] {
+  width: 35%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 120px;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}

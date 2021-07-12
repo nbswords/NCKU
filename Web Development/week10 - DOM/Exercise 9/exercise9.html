@@ -1,0 +1,84 @@
+<html>
+
+<head>
+
+  <script src="Baby_name_Short.js"></script>
+  <style>
+    input[type="text"] {
+      color: gray;
+    }
+  </style>
+
+</head>
+
+<body>
+  <input type="text" value="Use a space to separate" id="input_text">
+  <input type="button" value="Add a name" onclick=submit_name()>
+  </br>
+  <span id="number_of_name"></span>
+  <table id="name_table">
+    <tr>
+      <td><b>
+          Names
+        </b>
+      </td>
+    </tr>
+  </table>
+
+
+
+  <script>
+    var table = document.getElementById("name_table");
+    // setAttribute
+    table.setAttribute("border", 1)
+    // Copied selected name from table
+    table.addEventListener('copy', (event) => {
+      const selection = document.getSelection();
+      event.clipboardData.setData('text/plain', selection);
+      var copied_text = selection.toString();
+      alert(copied_text + ' is copied');
+    });
+
+    // read Name_List
+    var name_array = Baby_Name_List.split(",");
+    var name_length = name_array.length;
+    // number of name
+    document.getElementById("number_of_name").innerHTML = name_length + " names in the table";
+    // create table using loop
+    for (var i = 0; i < name_array.length; i++) {
+      var tr = document.createElement("tr");
+      var td = document.createElement('td');
+      td.appendChild(document.createTextNode(name_array[i]));
+      tr.appendChild(td);
+      table.appendChild(tr);
+    }
+    var new_name;
+
+    function submit_name() {
+      // First name和 Last name 第一個字母大寫 後面小寫 且中間有空白
+      // 各至少需1個字元
+      var regName = /^[A-Z][a-z]{0,}[\s,][A-Z][a-z]{0,}$/;
+      var input = document.getElementById("input_text").value;
+      if (!regName.test(input)) {
+        alert("Wrong input");
+      } else {
+        new_name = input;
+        add_name(new_name);
+      }
+    }
+
+    function add_name(new_name) {
+      // Append name
+      var first_name = new_name.split(" ");
+      var tr = document.createElement("tr");
+      var td = document.createElement('td');
+      td.appendChild(document.createTextNode(first_name[0]));
+      tr.appendChild(td);
+      table.appendChild(tr);
+      // Update length
+      name_length += 1;
+      document.getElementById("number_of_name").innerHTML = name_length + " names in the table";
+    }
+  </script>
+
+</html>
